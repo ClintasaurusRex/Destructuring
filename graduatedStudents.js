@@ -73,6 +73,21 @@ const students = [
   },
 ];
 
+// Your goal is to look through the list of students. - If a student has graduated, then your function should output a string literal informing you that the student has graduated and their diploma has been sent to their email. - If they haven’t, the function should output a string literal informing you that the student has not graduated and no diploma will be sent.
+
+// There is one restriction to the solution of this function: You can’t use dot or square bracket notation to solve this problem. We want you to practice applying your new destructuring knowledge to this function.
+
 const graduatedStudents = (listOfStudents) => {
-//Implement function
+  const graduated    = listOfStudents.filter(({ graduated }) => graduated);
+  const notGraduated = listOfStudents.filter(({ graduated }) => !graduated);
+
+  // loop over the graduated students and send them an email use map()
+  return [
+    ...graduated.map(({ name, email }) => `${name} has graduated a diploma sent has been sent to ${email}`),
+
+    ...notGraduated.map(({ name, email }) => `${name} has not graduated no diploma sent to ${email}`)
+  ];
 };
+
+graduatedStudents(students);
+console.log(graduatedStudents(students));
